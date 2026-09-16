@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Job {
+  id           String    @id @default(cuid())
+  title        String
+  prompt       String
+  scheduleType String
+  runAt        DateTime?
+  cronExpr     String?
+  nextRunAt    DateTime?
+  timezone     String    @default("UTC")
+  enabled      Boolean   @default(true)
+  handler      String    @default("reminder")
+  payload      String    @default("{}")
+  lastStatus   String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  runs         JobRun[]
+}
+
+model JobRun {
+  id         String    @id @default(cuid())
+  jobId      String
+  job        Job       @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  status     String
+  startedAt  DateTime  @default(now())
+  finishedAt DateTime?
+  message    String?
+  error      String?
+}

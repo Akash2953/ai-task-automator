@@ -1,0 +1,262 @@
+:root {
+  --bg: #f3efe6;
+  --bg-accent: #e7eef2;
+  --ink: #1c2430;
+  --muted: #5c6b7a;
+  --line: #c9d2db;
+  --brand: #0f6a6a;
+  --brand-ink: #083f3f;
+  --ok: #1f6b3a;
+  --bad: #9b2c2c;
+  --warn: #8a5a00;
+  --surface: rgba(255, 255, 255, 0.72);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--ink);
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #d9ecec 0%, transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, #f0e2d0 0%, transparent 50%),
+    linear-gradient(180deg, var(--bg), var(--bg-accent));
+}
+
+body {
+  padding: 2rem 1.25rem 4rem;
+}
+
+a {
+  color: var(--brand);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.shell {
+  width: min(960px, 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: 1.75rem;
+}
+
+.hero {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  color: var(--brand-ink);
+}
+
+.hero p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 42rem;
+  line-height: 1.5;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+  padding: 1.25rem;
+}
+
+.panel h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.85rem;
+}
+
+.form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.form label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.form textarea,
+.form input {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  padding: 0.7rem 0.8rem;
+  border-radius: 0;
+}
+
+.form textarea {
+  min-height: 5.5rem;
+  resize: vertical;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: flex-end;
+}
+
+.row > label {
+  flex: 1 1 180px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.btn {
+  border: 1px solid var(--brand);
+  background: var(--brand);
+  color: #fff;
+  padding: 0.55rem 0.95rem;
+}
+
+.btn.secondary {
+  background: transparent;
+  color: var(--brand-ink);
+}
+
+.btn.danger {
+  border-color: var(--bad);
+  background: transparent;
+  color: var(--bad);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.hint {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.notes {
+  font-size: 0.9rem;
+  color: var(--brand-ink);
+  margin: 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 0.65rem 0.35rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.table th {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.status {
+  font-weight: 600;
+}
+
+.status.success {
+  color: var(--ok);
+}
+
+.status.failed {
+  color: var(--bad);
+}
+
+.status.idle {
+  color: var(--muted);
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.runs {
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.job-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.empty {
+  color: var(--muted);
+  padding: 0.5rem 0;
+}
+
+@media (max-width: 700px) {
+  body {
+    padding: 1.25rem 0.85rem 3rem;
+  }
+
+  .table,
+  .table thead,
+  .table tbody,
+  .table th,
+  .table td,
+  .table tr {
+    display: block;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table tr {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .table td {
+    border: 0;
+    padding: 0.2rem 0;
+  }
+}

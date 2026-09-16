@@ -1,0 +1,13 @@
+node_modules
+.next
+dist
+.env
+*.db
+*.db-journal
+.turbo
+.DS_Store
+*.log
+apps/web/.next
+packages/db/dev.db
+packages/db/dev.db-journal
+data
