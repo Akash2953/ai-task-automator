@@ -10,7 +10,8 @@
     "worker": "npm run start -w @ata/worker",
     "db:generate": "npm run generate -w @ata/db",
     "db:push": "node scripts/db-push.js",
-    "build": "npm run generate -w @ata/db && npm run build -w @ata/web"
+    "build": "npm run generate -w @ata/db && npm run build -w @ata/web",
+    "deploy": "npm run generate -w @ata/db && npm run deploy -w @ata/web"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

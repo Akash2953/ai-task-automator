@@ -38,6 +38,28 @@ SQLite file: `packages/db/dev.db` (created by `npm run db:push`).
 | `npm run worker` | Worker only |
 | `npm run db:push` | Apply Prisma schema to SQLite |
 | `npm run db:generate` | Regenerate Prisma client |
+| `npm run deploy` | Build + deploy `apps/web` to Cloudflare Workers (OpenNext) |
+
+## Cloudflare Workers
+
+This is an npm workspaces monorepo. Do **not** run `npx wrangler deploy` from the repo root.
+
+In the Cloudflare dashboard (Workers Builds), set:
+
+| Setting | Value |
+|---------|--------|
+| Root directory | `/` (repository root) |
+| Install command | `npm clean-install` (default is fine) |
+| Build command | *(leave empty)* or `npm run generate -w @ata/db` |
+| Deploy command | `npm run deploy` |
+
+Local deploy (after `wrangler login`):
+
+```bash
+npm run deploy
+```
+
+**Note:** The MVP uses SQLite on disk and a Node worker process. Those do not run on Cloudflare Workers. Local `npm run dev` remains the full experience; Cloudflare currently hosts the web UI/API adapter path and will need D1 (or another hosted DB) for production job persistence.
 
 ## How it works
 
